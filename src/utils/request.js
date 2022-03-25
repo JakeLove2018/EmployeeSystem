@@ -15,14 +15,14 @@ const service = axios.create({
 service.interceptors.request.use((req)=>{
     // TO-DO
     const headers = req.headers;
-    if(!headers.Authorization) return headers.Authorization = 'Bear jack'
+    // if(!headers.Authorization) return headers.Authorization = 'Bear jack'
     return req;
 })
 /* 响应拦截 */
 service.interceptors.response.use((res)=>{
     const {code,date,message} = res.data;
     if(code === 200){
-        return data;
+        return date;
     }else if(code === 40001){
         ElMessage.error(TOKEN_INVALID)
         setTimeout(()=>{
@@ -36,8 +36,25 @@ service.interceptors.response.use((res)=>{
 })
 /* 请求核心函数 请求的配置为options */
 function request(options){
-    
+    options.method = options.method || 'get';
+    if(options.method.toLowerCase() === 'get'){
+        options.params = options.data;
+    }
+    if(config.env === 'product'){
+        service.defaults.baseURL = config.baseApi;
+    }else{
+        service.defaults.baseURL = config.mock ? config.mockApi:config.baseApi;
+    }
     return service(options)
 }
-
+['get','post','option','put','delete','patch'].forEach((item)=>{
+    request[item] = (url,data,options)=>{
+        return request({
+            url,
+            data,
+            ...options,
+            method:item,
+        })
+    }
+})
 export default request;

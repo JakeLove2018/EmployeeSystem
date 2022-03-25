@@ -8,7 +8,18 @@
 
 <script>
 export default {
-    name:"Login"
+    name:"Login",
+    mounted(){
+        this.$request({
+            method:'get',
+            url:'/login',
+            data:{
+                name:'jack',
+            }
+        }).then((res)=>{
+            console.log(res)
+        })
+    }
 }
 </script>
 
