@@ -17,9 +17,9 @@ const EnvConfig = {
         mockApi:'https://www.fastmock.site/mock/116ea96a3f30df5d7af030d42d812b9a/api'
     }
 }
-console.log(env);
 export default {
     env:'env',
     mock:true,
+    namespace:'manager',
     ...EnvConfig[env]
 }

@@ -3,9 +3,15 @@
 </template>
 <script>
 export default{
-    name:"App"
+    name:"App",
+    mounted(){
+        this.$storage.setItem('name','made')
+        // this.$storage.clearAll()
+        
+    }
 }
 </script>
+
 <style>
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
