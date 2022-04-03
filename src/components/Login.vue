@@ -1,9 +1,10 @@
 <template>
-    <div>登录页面</div>
-    <router-link to="/welcome">
-        <el-button>回首页</el-button>
-    </router-link>
-    
+    <div class="login">
+        <div>登录页面</div>
+        <router-link to="/welcome">
+            <el-button>回首页</el-button>
+        </router-link>
+    </div>
 </template>
 
 <script>
