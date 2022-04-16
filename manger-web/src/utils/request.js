@@ -37,6 +37,10 @@ service.interceptors.response.use((res)=>{
 /* 请求核心函数 请求的配置为options */
 function request(options){
     options.method = options.method || 'get';
+    if(typeof options.mock != undefined){
+        config.mock = options.mock;
+        
+    }
     if(options.method.toLowerCase() === 'get'){
         options.params = options.data;
     }
