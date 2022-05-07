@@ -3,10 +3,10 @@ import request from '../utils/request.js';
 export default  {
     login(params){
         return request({
-            url:'/user/login',
+            url:'/users/login',
             method:'POST',
             data:params,
-            mock:true,
+            mock:false,
         })
     }
 }
